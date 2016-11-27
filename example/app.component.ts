@@ -1,4 +1,7 @@
 import { Component } from '@angular/core'
+import { MDialogService, ModalDismissed, ModalClosed } from '../src'
+import { AppModule } from './app.module'
+import { MyCustomModalComponent } from './components/custom-modal/custom-modal.component';
 
 @Component({
 	selector: 'app',
@@ -7,11 +10,27 @@ import { Component } from '@angular/core'
 	templateUrl: './app.component.jade',
 })
 export class AppComponent {
+	private dialogRes
+	private dialogResData
 
-	constructor() {}
+	constructor(
+		private dialog: MDialogService,
+	) {}
 
-	ngOnInit() {}
+	open() {
+		let dialog = this.dialog.create(AppModule, MyCustomModalComponent, {
+			foo: 'bar',
+		})
 
-	ngOnDestroy() {
+		dialog.result.subscribe((result) => {
+			this.dialogRes = {
+				close: result instanceof ModalClosed,
+				dismiss: result instanceof ModalDismissed,
+			}
+
+			if (result instanceof ModalClosed) {
+				this.dialogResData = result.data
+			}
+		})
 	}
 }

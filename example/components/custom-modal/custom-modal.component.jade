@@ -1,0 +1,10 @@
+.modal-dialog
+	.modal-content
+		.modal-header
+			button.close(type="button", (click)="dismiss()")
+				| &times;
+			h4.modal-title Confirm
+		.modal-body
+			| {{ foo }}
+		.modal-footer
+			button.btn.btn-success((click)="close({value: 'ok'})") Save

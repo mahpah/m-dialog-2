@@ -1,13 +1,3 @@
-# Angular2 component for redactor
+# Angular2 modal component
 
-This component wrap around [redactor](https://imperavi.com/redactor/) by @imperavi. Note that redactor is not free, please purchase your own copy.
-
-## Manual
-Use as an form input.
-
-```
-<form [formGroup]="form">
-	<div redactor formControlName="content"></div>
-</form>
-```
-See `example` folder.
+For angular 1 one, please check this repo: https://github.com/mahpah/mDialog

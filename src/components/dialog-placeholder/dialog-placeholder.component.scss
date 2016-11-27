@@ -1,0 +1,26 @@
+:host {
+	display: block;
+	position: relative;
+}
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0);
+	visibility: hidden;
+	transition: visibility 0ms 300ms, background 300ms 0ms;
+
+	&.show {
+		visibility: visible;
+		background: rgba(0, 0, 0, 0.5);
+		transition: visibility 0ms 0ms, background 300ms 0ms;
+	}
+}
+
+// .dialog-container {
+// 	display: block;
+// 	z-index: 9999;
+// }

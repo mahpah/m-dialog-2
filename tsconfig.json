@@ -16,7 +16,9 @@
 		"types": [
 			"node"
 		],
-		"declaration": true
+		"declaration": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true
 	},
 	"awesomeTypescriptLoaderOptions": {
 		"useWebpackText": true,
