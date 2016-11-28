@@ -1,4 +1,16 @@
 <a name="0.0.1"></a>
+## 0.0.1 (2016-11-28)
+
+
+### Features
+
+* **animation:** add slide in animation ([ecabfb8](https://github.com/mahpah/m-dialog-2/commit/ecabfb8))
+* **base:** add confirm dialog helper ([ddd0f43](https://github.com/mahpah/m-dialog-2/commit/ddd0f43))
+* **dialog:** initial ([cd943e1](https://github.com/mahpah/m-dialog-2/commit/cd943e1))
+
+
+
+<a name="0.0.1"></a>
 ## 0.0.1 (2016-11-08)
 * init version. Nothing to log.
 
