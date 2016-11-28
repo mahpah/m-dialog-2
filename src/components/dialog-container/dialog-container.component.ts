@@ -34,14 +34,4 @@ import {
 		]),
 	],
 })
-export class DialogContainerComponent {
-	constructor() {
-
-	}
-
-	ngOnInit() {
-	}
-
-	ngOnDestroy() {
-	}
-}
+export class DialogContainerComponent {}

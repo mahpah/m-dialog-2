@@ -6,14 +6,4 @@ import { Component } from '@angular/core'
 	styleUrls: ['./dialog-backdrop.component.scss'],
 	templateUrl: './dialog-backdrop.component.jade',
 })
-export class DialogBackdropComponent {
-	constructor() {
-
-	}
-
-	ngOnInit() {
-	}
-
-	ngOnDestroy() {
-	}
-}
+export class DialogBackdropComponent {}

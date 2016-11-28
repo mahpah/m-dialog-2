@@ -1,10 +1,14 @@
 dialog-placeholder
 .container
 	h1 Dialog made easy
-	button((click)="open()") Click me!!!
+	button.btn.btn-primary((click)="open()") Click me!!!
 
 	div.alert.alert-info(*ngIf="dialogRes")
 		p(*ngIf="dialogRes.dismiss") You dismissed dialog
 		p(*ngIf="dialogRes.close") You closed dialog, with this data:
 		pre(*ngIf="dialogResData")
 			| {{ dialogResData | json }}
+
+	button.btn.btn-danger((click)="confirm()") Delete
+	.alert.alert-danger(*ngIf="confirmed")
+		| We are processing you request

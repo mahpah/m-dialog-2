@@ -1,0 +1,12 @@
+dialog-container
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type="button", (click)="dismiss()")
+					| &times;
+				h4.modal-title {{ title }}
+			.modal-body
+				| {{ body }}
+			.modal-footer
+				button.btn.btn-success((click)="close(true)") {{ btnOkLabel }}
+				button.btn.btn-default((click)="close()") {{ btnCancelLabel }}

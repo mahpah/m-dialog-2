@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { MDialogService, ModalDismissed, ModalClosed } from '../src'
+import { MDialogService, DialogDismissed, DialogClosed } from '../src'
 import { AppModule } from './app.module'
 import { MyCustomModalComponent } from './components/custom-modal/custom-modal.component';
 
@@ -12,6 +12,7 @@ import { MyCustomModalComponent } from './components/custom-modal/custom-modal.c
 export class AppComponent {
 	private dialogRes
 	private dialogResData
+	private confirmed
 
 	constructor(
 		private dialog: MDialogService,
@@ -24,13 +25,24 @@ export class AppComponent {
 
 		dialog.result.subscribe((result) => {
 			this.dialogRes = {
-				close: result instanceof ModalClosed,
-				dismiss: result instanceof ModalDismissed,
+				close: result instanceof DialogClosed,
+				dismiss: result instanceof DialogDismissed,
 			}
 
-			if (result instanceof ModalClosed) {
+			if (result instanceof DialogClosed) {
 				this.dialogResData = result.data
 			}
+		})
+	}
+
+	confirm() {
+		let confirmModal = this.dialog.confirm(
+			'Are you sure?',
+			'Delete me?'
+		)
+
+		confirmModal.result.subscribe(response => {
+			this.confirmed = response.data
 		})
 	}
 }

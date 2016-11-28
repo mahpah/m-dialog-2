@@ -1,16 +1,14 @@
-import { NgModule } from '@angular/core'
+import { NgModule, ModuleWithProviders } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { Components } from './components'
-import { Services } from './services'
+import { MDialogService } from './services'
 
 @NgModule({
 	imports: [
 		CommonModule,
 	],
 
-	providers: [
-		Services,
-	],
+	providers: [],
 
 	declarations: [
 		Components,
@@ -20,4 +18,13 @@ import { Services } from './services'
 		Components,
 	],
 })
-export class MDialogModule {}
+export class MDialogModule {
+	static forRoot(): ModuleWithProviders {
+		return {
+			ngModule: MDialogModule,
+			providers: [
+				MDialogService,
+			],
+		}
+	}
+}

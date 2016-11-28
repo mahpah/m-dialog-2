@@ -7,7 +7,7 @@ import { MDialogModule } from '../src'
 @NgModule({
 	imports: [
 		BrowserModule,
-		MDialogModule,
+		MDialogModule.forRoot(),
 	],
 
 	declarations: [

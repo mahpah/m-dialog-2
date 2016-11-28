@@ -1,3 +1,3 @@
-export * from './modal-container'
-export * from './modal.decorator'
-export * from './modal-result'
+export * from './dialog-container'
+export * from './dialog.decorator'
+export * from './dialog-result'
