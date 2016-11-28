@@ -39,18 +39,18 @@
     "pug-html-loader": "1.0.7",
     "resolve-url-loader": "^1.6.0",
     "rimraf": "^2.5.4",
-    "rxjs": "^5.0.0-beta.12",
     "sass-loader": "^4.0.2",
     "ts-helpers": "^1.1.2",
     "ts-loader": "^1.2.2",
     "typescript": "^2.0.7",
     "webpack": "beta",
     "webpack-dev-server": "beta",
-    "webpack-merge": "^0.15.0",
-    "zone.js": "^0.6.26"
+    "webpack-merge": "^0.15.0"
   },
   "dependencies": {
+    "rxjs": "^5.0.0-beta.12",
     "@angular/common": "^2.1.2",
+    "zone.js": "^0.6.26",
     "@angular/core": "^2.1.2"
   }
 }

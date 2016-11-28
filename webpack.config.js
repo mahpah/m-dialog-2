@@ -11,12 +11,18 @@ const resolve = {
 }
 
 /* eslint-disable */
-let externals = Object.keys(pkg.dependencies)
+let externals = [
+	...Object.keys(pkg.devDependencies),
+	...Object.keys(pkg.dependencies)
+]
 	.reduce(
 		(memo, key) =>
 			Object.assign(memo, { [key]: key }),
 		{}
 	)
+externals['rxjs/Observable'] = 'rxjs/Observable'
+externals['rxjs/Subject'] = 'rxjs/Subject'
+externals['rxjs/ReplaySubject'] = 'rxjs/ReplaySubject'
 /* eslint-enable */
 
 const loaders = [{
