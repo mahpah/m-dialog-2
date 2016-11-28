@@ -22,7 +22,7 @@ let externals = Object.keys(pkg.dependencies)
 const loaders = [{
 	test: /\.ts$/,
 	loaders: [
-		'awesome-typescript-loader',
+		'ts-loader',
 		'angular2-template-loader',
 	],
 	exclude: /node_modules/,

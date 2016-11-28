@@ -4,10 +4,10 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["@angular/common", "@angular/core"], factory);
 	else if(typeof exports === 'object')
-		exports["m-dialog2"] = factory(require("@angular/common"), require("@angular/core"));
+		exports["m-dialog-2"] = factory(require("@angular/common"), require("@angular/core"));
 	else
-		root["m-dialog2"] = factory(root["@angular/common"], root["@angular/core"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_43__, __WEBPACK_EXTERNAL_MODULE_5__) {
+		root["m-dialog-2"] = factory(root["@angular/common"], root["@angular/core"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_54__, __WEBPACK_EXTERNAL_MODULE_0__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -71,21 +71,27 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+
+/***/ },
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var isArray_1 = __webpack_require__(38);
-var isObject_1 = __webpack_require__(39);
-var isFunction_1 = __webpack_require__(15);
-var tryCatch_1 = __webpack_require__(41);
-var errorObject_1 = __webpack_require__(14);
-var UnsubscriptionError_1 = __webpack_require__(37);
+var isArray_1 = __webpack_require__(45);
+var isObject_1 = __webpack_require__(46);
+var isFunction_1 = __webpack_require__(16);
+var tryCatch_1 = __webpack_require__(48);
+var errorObject_1 = __webpack_require__(15);
+var UnsubscriptionError_1 = __webpack_require__(44);
 /**
  * Represents a disposable resource, such as the execution of an Observable. A
  * Subscription has one important method, `unsubscribe`, that takes no argument
@@ -234,7 +240,7 @@ exports.Subscription = Subscription;
 //# sourceMappingURL=Subscription.js.map
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -251,10 +257,10 @@ if (!exports.root) {
     throw new Error('RxJS could not find any global context (window, self, global)');
 }
 //# sourceMappingURL=root.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53)))
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -262,15 +268,71 @@ if (!exports.root) {
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(__webpack_require__(9));
-var m_dialog_service_1 = __webpack_require__(9);
+__export(__webpack_require__(21));
+var m_dialog_service_1 = __webpack_require__(21);
 exports.Services = [
     m_dialog_service_1.MDialogService,
 ];
 
 
 /***/ },
-/* 3 */
+/* 4 */
+/***/ function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function() {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		var result = [];
+		for(var i = 0; i < this.length; i++) {
+			var item = this[i];
+			if(item[2]) {
+				result.push("@media " + item[2] + "{" + item[1] + "}");
+			} else {
+				result.push(item[1]);
+			}
+		}
+		return result.join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+
+/***/ },
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -280,10 +342,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isFunction_1 = __webpack_require__(15);
-var Subscription_1 = __webpack_require__(0);
-var Observer_1 = __webpack_require__(11);
-var rxSubscriber_1 = __webpack_require__(4);
+var isFunction_1 = __webpack_require__(16);
+var Subscription_1 = __webpack_require__(1);
+var Observer_1 = __webpack_require__(12);
+var rxSubscriber_1 = __webpack_require__(6);
 /**
  * Implements the {@link Observer} interface and extends the
  * {@link Subscription} class. While the {@link Observer} is the public API for
@@ -525,36 +587,16 @@ var SafeSubscriber = (function (_super) {
 //# sourceMappingURL=Subscriber.js.map
 
 /***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-"use strict";
-var root_1 = __webpack_require__(1);
-var Symbol = root_1.root.Symbol;
-exports.$$rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function') ?
-    Symbol.for('rxSubscriber') : '@@rxSubscriber';
-//# sourceMappingURL=rxSubscriber.js.map
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
-
-/***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-__export(__webpack_require__(8));
-__export(__webpack_require__(20));
-__export(__webpack_require__(19));
-
+var root_1 = __webpack_require__(2);
+var Symbol = root_1.root.Symbol;
+exports.$$rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function') ?
+    Symbol.for('rxSubscriber') : '@@rxSubscriber';
+//# sourceMappingURL=rxSubscriber.js.map
 
 /***/ },
 /* 7 */
@@ -562,27 +604,52 @@ __export(__webpack_require__(19));
 
 "use strict";
 "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-__export(__webpack_require__(17));
+var core_1 = __webpack_require__(0);
+var ConfirmDialogComponent = (function () {
+    function ConfirmDialogComponent() {
+    }
+    ConfirmDialogComponent.prototype.ngOnInit = function () {
+    };
+    ConfirmDialogComponent.prototype.ngOnDestroy = function () {
+    };
+    return ConfirmDialogComponent;
+}());
+ConfirmDialogComponent = __decorate([
+    core_1.Component({
+        selector: 'confirm-dialog',
+        providers: [],
+        // styles: [require('./confirm-dialog.component.scss')],
+        template: __webpack_require__(28),
+    }),
+    __metadata("design:paramtypes", [])
+], ConfirmDialogComponent);
+exports.ConfirmDialogComponent = ConfirmDialogComponent;
 
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var ModalContainer = (function () {
-    function ModalContainer() {
-    }
-    ModalContainer.prototype.dismiss = function () {
-        this.destroy();
-    };
-    return ModalContainer;
-}());
-exports.ModalContainer = ModalContainer;
+var confirm_dialog_component_1 = __webpack_require__(7);
+var dialog_backdrop_component_1 = __webpack_require__(17);
+var dialog_container_component_1 = __webpack_require__(18);
+var dialog_placeholder_1 = __webpack_require__(19);
+var confirm_dialog_component_2 = __webpack_require__(7);
+exports.ConfirmDialogComponent = confirm_dialog_component_2.ConfirmDialogComponent;
+var dialog_backdrop_component_2 = __webpack_require__(17);
+exports.DialogBackdropComponent = dialog_backdrop_component_2.DialogBackdropComponent;
+var dialog_container_component_2 = __webpack_require__(18);
+exports.DialogContainerComponent = dialog_container_component_2.DialogContainerComponent;
+var dialog_placeholder_2 = __webpack_require__(19);
+exports.DialogPlaceholderComponent = dialog_placeholder_2.DialogPlaceholderComponent;
+exports.Components = [
+    confirm_dialog_component_1.ConfirmDialogComponent,
+    dialog_backdrop_component_1.DialogBackdropComponent,
+    dialog_container_component_1.DialogContainerComponent,
+    dialog_placeholder_1.DialogPlaceholderComponent,
+];
 
 
 /***/ },
@@ -591,64 +658,12 @@ exports.ModalContainer = ModalContainer;
 
 "use strict";
 "use strict";
-var core_1 = __webpack_require__(5);
-var ReplaySubject_1 = __webpack_require__(26);
-var lib_1 = __webpack_require__(6);
-var MDialogService = (function () {
-    function MDialogService(compiler) {
-        this.compiler = compiler;
-        this.activeInstances = 0;
-    }
-    MDialogService.prototype.registerViewContainerRef = function (vcr) {
-        this.viewContainerRef = vcr;
-    };
-    MDialogService.prototype.registerInjector = function (injector) {
-        this.injector = injector;
-    };
-    MDialogService.prototype.create = function (module, component, parameters) {
-        var _this = this;
-        var componentRef$ = new ReplaySubject_1.ReplaySubject();
-        var result$ = new ReplaySubject_1.ReplaySubject();
-        this.compiler.compileModuleAndAllComponentsAsync(module)
-            .then(function (factory) {
-            var componentFactory = factory.componentFactories
-                .filter(function (it) { return it.componentType === component; })[0];
-            var childInjector = core_1.ReflectiveInjector.resolveAndCreate([], _this.injector);
-            var componentRef = _this.viewContainerRef
-                .createComponent(componentFactory, 0, childInjector);
-            _this.activeInstances++;
-            var destroy = function () {
-                _this.activeInstances--;
-                componentRef.destroy();
-                result$.next(new lib_1.ModalDismissed());
-                result$.complete();
-            };
-            var close = function (data) {
-                _this.activeInstances--;
-                componentRef.destroy();
-                var result = new lib_1.ModalClosed();
-                result.data = data;
-                result$.next(result);
-                result$.complete();
-            };
-            Object.assign(componentRef.instance, parameters, { destroy: destroy, close: close });
-            componentRef$.next({
-                componentRef: componentRef,
-            });
-            componentRef$.complete();
-        });
-        return {
-            componentRef: componentRef$,
-            result: result$,
-        };
-    };
-    return MDialogService;
-}());
-MDialogService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [core_1.Compiler])
-], MDialogService);
-exports.MDialogService = MDialogService;
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+__export(__webpack_require__(20));
+__export(__webpack_require__(52));
+__export(__webpack_require__(51));
 
 
 /***/ },
@@ -657,9 +672,50 @@ exports.MDialogService = MDialogService;
 
 "use strict";
 "use strict";
-var root_1 = __webpack_require__(1);
-var toSubscriber_1 = __webpack_require__(40);
-var observable_1 = __webpack_require__(36);
+var core_1 = __webpack_require__(0);
+var common_1 = __webpack_require__(54);
+var components_1 = __webpack_require__(8);
+var services_1 = __webpack_require__(3);
+var MDialogModule = (function () {
+    function MDialogModule() {
+    }
+    MDialogModule.forRoot = function () {
+        return {
+            ngModule: MDialogModule,
+            providers: [
+                services_1.MDialogService,
+            ],
+        };
+    };
+    return MDialogModule;
+}());
+MDialogModule = __decorate([
+    core_1.NgModule({
+        imports: [
+            common_1.CommonModule,
+        ],
+        providers: [],
+        declarations: [
+            components_1.Components,
+        ],
+        exports: [
+            components_1.Components,
+        ],
+    }),
+    __metadata("design:paramtypes", [])
+], MDialogModule);
+exports.MDialogModule = MDialogModule;
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var root_1 = __webpack_require__(2);
+var toSubscriber_1 = __webpack_require__(47);
+var observable_1 = __webpack_require__(43);
 /**
  * A representation of any set of values over any amount of time. This the most basic building block
  * of RxJS.
@@ -787,7 +843,7 @@ exports.Observable = Observable;
 //# sourceMappingURL=Observable.js.map
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -801,7 +857,7 @@ exports.empty = {
 //# sourceMappingURL=Observer.js.map
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -811,7 +867,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscription_1 = __webpack_require__(0);
+var Subscription_1 = __webpack_require__(1);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -847,7 +903,7 @@ exports.SubjectSubscription = SubjectSubscription;
 //# sourceMappingURL=SubjectSubscription.js.map
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -880,7 +936,7 @@ exports.ObjectUnsubscribedError = ObjectUnsubscribedError;
 //# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -890,7 +946,7 @@ exports.errorObject = { e: {} };
 //# sourceMappingURL=errorObject.js.map
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -902,83 +958,27 @@ exports.isFunction = isFunction;
 //# sourceMappingURL=isFunction.js.map
 
 /***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-"use strict";
-var core_1 = __webpack_require__(5);
-var common_1 = __webpack_require__(43);
-var components_1 = __webpack_require__(18);
-var services_1 = __webpack_require__(2);
-var MDialogModule = (function () {
-    function MDialogModule() {
-    }
-    return MDialogModule;
-}());
-MDialogModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            common_1.CommonModule,
-        ],
-        providers: [
-            services_1.Services,
-        ],
-        declarations: [
-            components_1.Components,
-        ],
-        exports: [
-            components_1.Components,
-        ],
-    }),
-    __metadata("design:paramtypes", [])
-], MDialogModule);
-exports.MDialogModule = MDialogModule;
-
-
-/***/ },
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var core_1 = __webpack_require__(5);
-var services_1 = __webpack_require__(2);
-var DialogPlaceholderComponent = (function () {
-    function DialogPlaceholderComponent(injector, mDialog, viewRef) {
-        this.injector = injector;
-        this.mDialog = mDialog;
-        this.viewRef = viewRef;
-        console.log(this.viewRef, this.viewContainer);
-        this.mDialog.registerInjector(this.injector);
+var core_1 = __webpack_require__(0);
+var DialogBackdropComponent = (function () {
+    function DialogBackdropComponent() {
     }
-    Object.defineProperty(DialogPlaceholderComponent.prototype, "instanceCount", {
-        get: function () {
-            return this.mDialog.activeInstances;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    DialogPlaceholderComponent.prototype.ngAfterViewInit = function () {
-        this.mDialog.registerViewContainerRef(this.viewContainer);
-    };
-    return DialogPlaceholderComponent;
+    return DialogBackdropComponent;
 }());
-__decorate([
-    core_1.ViewChild('container', { read: core_1.ViewContainerRef }),
-    __metadata("design:type", core_1.ViewContainerRef)
-], DialogPlaceholderComponent.prototype, "viewContainer", void 0);
-DialogPlaceholderComponent = __decorate([
+DialogBackdropComponent = __decorate([
     core_1.Component({
-        selector: 'dialog-placeholder',
-        template: __webpack_require__(24),
-        styles: [__webpack_require__(23)],
+        selector: 'dialog-backdrop',
+        providers: [],
+        styles: [__webpack_require__(25)],
+        template: __webpack_require__(29),
     }),
-    __metadata("design:paramtypes", [core_1.Injector,
-        services_1.MDialogService,
-        core_1.ViewContainerRef])
-], DialogPlaceholderComponent);
-exports.DialogPlaceholderComponent = DialogPlaceholderComponent;
+    __metadata("design:paramtypes", [])
+], DialogBackdropComponent);
+exports.DialogBackdropComponent = DialogBackdropComponent;
 
 
 /***/ },
@@ -987,64 +987,184 @@ exports.DialogPlaceholderComponent = DialogPlaceholderComponent;
 
 "use strict";
 "use strict";
-var dialog_placeholder_1 = __webpack_require__(7);
-var dialog_placeholder_2 = __webpack_require__(7);
-exports.DialogPlaceholderComponent = dialog_placeholder_2.DialogPlaceholderComponent;
-exports.Components = [
-    dialog_placeholder_1.DialogPlaceholderComponent,
-];
+var core_1 = __webpack_require__(0);
+var DialogContainerComponent = (function () {
+    function DialogContainerComponent() {
+    }
+    return DialogContainerComponent;
+}());
+DialogContainerComponent = __decorate([
+    core_1.Component({
+        selector: 'dialog-container',
+        providers: [],
+        styles: [__webpack_require__(26)],
+        template: __webpack_require__(30),
+        animations: [
+            core_1.trigger('fade', [
+                core_1.state('void', core_1.style({ opacity: 0 })),
+                core_1.state('*', core_1.style({ opacity: 1 })),
+                core_1.transition(':enter', core_1.animate(200)),
+                core_1.transition(':leave', core_1.animate(200)),
+            ]),
+            core_1.trigger('slideDown', [
+                core_1.state('void', core_1.style({
+                    transform: 'translateY(-100%)',
+                    opcity: 0,
+                })),
+                core_1.state('*', core_1.style({
+                    transform: 'translateY(0)',
+                    opacity: 1,
+                })),
+                core_1.transition(':enter', core_1.animate(200)),
+                core_1.transition(':leave', core_1.animate(200)),
+            ]),
+        ],
+    }),
+    __metadata("design:paramtypes", [])
+], DialogContainerComponent);
+exports.DialogContainerComponent = DialogContainerComponent;
 
 
 /***/ },
 /* 19 */
-/***/ function(module, exports) {
-
-"use strict";
-"use strict";
-var ModalResult = (function () {
-    function ModalResult() {
-    }
-    return ModalResult;
-}());
-exports.ModalResult = ModalResult;
-var ModalClosed = (function (_super) {
-    __extends(ModalClosed, _super);
-    function ModalClosed() {
-        return _super.apply(this, arguments) || this;
-    }
-    return ModalClosed;
-}(ModalResult));
-exports.ModalClosed = ModalClosed;
-var ModalDismissed = (function (_super) {
-    __extends(ModalDismissed, _super);
-    function ModalDismissed() {
-        return _super.apply(this, arguments) || this;
-    }
-    return ModalDismissed;
-}(ModalResult));
-exports.ModalDismissed = ModalDismissed;
-
-
-/***/ },
-/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var modal_container_1 = __webpack_require__(8);
-function Modal() {
-    return function (target) {
-        Object.assign(target.prototype, modal_container_1.ModalContainer.prototype);
-    };
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-exports.Modal = Modal;
+__export(__webpack_require__(50));
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+var ModalContainer = (function () {
+    function ModalContainer() {
+    }
+    return ModalContainer;
+}());
+exports.ModalContainer = ModalContainer;
 
 
 /***/ },
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(22)();
+"use strict";
+"use strict";
+var core_1 = __webpack_require__(0);
+var ReplaySubject_1 = __webpack_require__(33);
+var lib_1 = __webpack_require__(9);
+var m_dialog_module_1 = __webpack_require__(10);
+var confirm_dialog_1 = __webpack_require__(49);
+var MDialogService = (function () {
+    function MDialogService(compiler) {
+        this.compiler = compiler;
+        this.activeInstances = 0;
+    }
+    MDialogService.prototype.registerViewContainerRef = function (vcr) {
+        this.viewContainerRef = vcr;
+    };
+    MDialogService.prototype.registerInjector = function (injector) {
+        this.injector = injector;
+    };
+    MDialogService.prototype.create = function (module, component, parameters) {
+        var _this = this;
+        var componentRef$ = new ReplaySubject_1.ReplaySubject();
+        var result$ = new ReplaySubject_1.ReplaySubject();
+        this.compiler.compileModuleAndAllComponentsAsync(module)
+            .then(function (factory) {
+            var componentFactory = factory.componentFactories
+                .filter(function (it) { return it.componentType === component; })[0];
+            if (!componentFactory) {
+                throw 'Cannot find dialog component. Make sure you\'ve declared one.';
+            }
+            var childInjector = core_1.ReflectiveInjector.resolveAndCreate([], _this.injector);
+            var componentRef = _this.viewContainerRef
+                .createComponent(componentFactory, 0, childInjector);
+            _this.activeInstances++;
+            var dismiss = function () {
+                _this.activeInstances--;
+                componentRef.destroy();
+                result$.next(new lib_1.DialogDismissed());
+                result$.complete();
+            };
+            var close = function (data) {
+                _this.activeInstances--;
+                componentRef.destroy();
+                var result = new lib_1.DialogClosed(data);
+                result$.next(result);
+                result$.complete();
+            };
+            Object.assign(componentRef.instance, parameters, { dismiss: dismiss, close: close });
+            componentRef$.next({
+                componentRef: componentRef,
+            });
+            componentRef$.complete();
+        });
+        return {
+            componentRef: componentRef$,
+            result: result$,
+        };
+    };
+    MDialogService.prototype.confirm = function (title, body, btnOkLabel, btnCancelLabel) {
+        if (btnOkLabel === void 0) { btnOkLabel = 'Ok'; }
+        if (btnCancelLabel === void 0) { btnCancelLabel = 'Cancel'; }
+        var context = {
+            title: title,
+            body: body,
+            btnOkLabel: btnOkLabel,
+            btnCancelLabel: btnCancelLabel,
+        };
+        return this.create(m_dialog_module_1.MDialogModule, confirm_dialog_1.ConfirmDialogComponent, context);
+    };
+    return MDialogService;
+}());
+MDialogService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [core_1.Compiler])
+], MDialogService);
+exports.MDialogService = MDialogService;
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  display: block;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.5);\n}", ""]);
+
+// exports
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)();
 // imports
 
 
@@ -1055,69 +1175,13 @@ exports.push([module.i, ":host {\n  display: block;\n  position: relative;\n}\n\
 
 
 /***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function() {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		var result = [];
-		for(var i = 0; i < this.length; i++) {
-			var item = this[i];
-			if(item[2]) {
-				result.push("@media " + item[2] + "{" + item[1] + "}");
-			} else {
-				result.push(item[1]);
-			}
-		}
-		return result.join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-
-/***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 // css-to-string-loader: transforms styles from css-loader to a string output
 
 // Get the styles
-var styles = __webpack_require__(21);
+var styles = __webpack_require__(22);
 
 if (typeof styles === 'string') {
   // Return an existing string
@@ -1128,18 +1192,70 @@ if (typeof styles === 'string') {
 }
 
 /***/ },
-/* 24 */
-/***/ function(module, exports) {
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"backdrop\" [ngClass]=\"{show: instanceCount}\"><div class=\"dialog-container\" #container></div></div>";
+// css-to-string-loader: transforms styles from css-loader to a string output
+
+// Get the styles
+var styles = __webpack_require__(23);
+
+if (typeof styles === 'string') {
+  // Return an existing string
+  module.exports = styles;
+} else {
+  // Call the custom toString method from css-loader module
+  module.exports = styles.toString();
+}
 
 /***/ },
-/* 25 */
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+// css-to-string-loader: transforms styles from css-loader to a string output
+
+// Get the styles
+var styles = __webpack_require__(24);
+
+if (typeof styles === 'string') {
+  // Return an existing string
+  module.exports = styles;
+} else {
+  // Call the custom toString method from css-loader module
+  module.exports = styles.toString();
+}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+module.exports = "<dialog-container><div class=\"modal-dialog\"><div class=\"modal-content\"><div class=\"modal-header\"><button class=\"close\" type=\"button\" (click)=\"dismiss()\">&times;</button><h4 class=\"modal-title\">{{ title }}</h4></div><div class=\"modal-body\">{{ body }}</div><div class=\"modal-footer\"><button class=\"btn btn-success\" (click)=\"close(true)\">{{ btnOkLabel }}</button><button class=\"btn btn-default\" (click)=\"close()\">{{ btnCancelLabel }}</button></div></div></div></dialog-container>";
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+module.exports = "<ng-content></ng-content>";
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+module.exports = "<dialog-backdrop @fade><div @slideDown><ng-content></ng-content></div></dialog-backdrop>";
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+module.exports = "";
+
+/***/ },
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var Observable_1 = __webpack_require__(10);
+var Observable_1 = __webpack_require__(11);
 /**
  * Represents a push-based event or value that an {@link Observable} can emit.
  * This class is particularly useful for operators that manage notifications,
@@ -1267,7 +1383,7 @@ exports.Notification = Notification;
 //# sourceMappingURL=Notification.js.map
 
 /***/ },
-/* 26 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1277,12 +1393,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subject_1 = __webpack_require__(28);
-var queue_1 = __webpack_require__(35);
-var Subscription_1 = __webpack_require__(0);
-var observeOn_1 = __webpack_require__(29);
-var ObjectUnsubscribedError_1 = __webpack_require__(13);
-var SubjectSubscription_1 = __webpack_require__(12);
+var Subject_1 = __webpack_require__(35);
+var queue_1 = __webpack_require__(42);
+var Subscription_1 = __webpack_require__(1);
+var observeOn_1 = __webpack_require__(36);
+var ObjectUnsubscribedError_1 = __webpack_require__(14);
+var SubjectSubscription_1 = __webpack_require__(13);
 /**
  * @class ReplaySubject<T>
  */
@@ -1375,7 +1491,7 @@ var ReplayEvent = (function () {
 //# sourceMappingURL=ReplaySubject.js.map
 
 /***/ },
-/* 27 */
+/* 34 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1430,7 +1546,7 @@ exports.Scheduler = Scheduler;
 //# sourceMappingURL=Scheduler.js.map
 
 /***/ },
-/* 28 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1440,12 +1556,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Observable_1 = __webpack_require__(10);
-var Subscriber_1 = __webpack_require__(3);
-var Subscription_1 = __webpack_require__(0);
-var ObjectUnsubscribedError_1 = __webpack_require__(13);
-var SubjectSubscription_1 = __webpack_require__(12);
-var rxSubscriber_1 = __webpack_require__(4);
+var Observable_1 = __webpack_require__(11);
+var Subscriber_1 = __webpack_require__(5);
+var Subscription_1 = __webpack_require__(1);
+var ObjectUnsubscribedError_1 = __webpack_require__(14);
+var SubjectSubscription_1 = __webpack_require__(13);
+var rxSubscriber_1 = __webpack_require__(6);
 /**
  * @class SubjectSubscriber<T>
  */
@@ -1596,7 +1712,7 @@ exports.AnonymousSubject = AnonymousSubject;
 //# sourceMappingURL=Subject.js.map
 
 /***/ },
-/* 29 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1606,8 +1722,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(3);
-var Notification_1 = __webpack_require__(25);
+var Subscriber_1 = __webpack_require__(5);
+var Notification_1 = __webpack_require__(32);
 /**
  * @see {@link Notification}
  *
@@ -1677,7 +1793,7 @@ exports.ObserveOnMessage = ObserveOnMessage;
 //# sourceMappingURL=observeOn.js.map
 
 /***/ },
-/* 30 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1687,7 +1803,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscription_1 = __webpack_require__(0);
+var Subscription_1 = __webpack_require__(1);
 /**
  * A unit of work to be executed in a {@link Scheduler}. An action is typically
  * created from within a Scheduler and an RxJS user does not need to concern
@@ -1727,7 +1843,7 @@ exports.Action = Action;
 //# sourceMappingURL=Action.js.map
 
 /***/ },
-/* 31 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1737,8 +1853,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(1);
-var Action_1 = __webpack_require__(30);
+var root_1 = __webpack_require__(2);
+var Action_1 = __webpack_require__(37);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -1875,7 +1991,7 @@ exports.AsyncAction = AsyncAction;
 //# sourceMappingURL=AsyncAction.js.map
 
 /***/ },
-/* 32 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1885,7 +2001,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Scheduler_1 = __webpack_require__(27);
+var Scheduler_1 = __webpack_require__(34);
 var AsyncScheduler = (function (_super) {
     __extends(AsyncScheduler, _super);
     function AsyncScheduler() {
@@ -1932,7 +2048,7 @@ exports.AsyncScheduler = AsyncScheduler;
 //# sourceMappingURL=AsyncScheduler.js.map
 
 /***/ },
-/* 33 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1942,7 +2058,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncAction_1 = __webpack_require__(31);
+var AsyncAction_1 = __webpack_require__(38);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -1987,7 +2103,7 @@ exports.QueueAction = QueueAction;
 //# sourceMappingURL=QueueAction.js.map
 
 /***/ },
-/* 34 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1997,7 +2113,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var AsyncScheduler_1 = __webpack_require__(32);
+var AsyncScheduler_1 = __webpack_require__(39);
 var QueueScheduler = (function (_super) {
     __extends(QueueScheduler, _super);
     function QueueScheduler() {
@@ -2009,23 +2125,23 @@ exports.QueueScheduler = QueueScheduler;
 //# sourceMappingURL=QueueScheduler.js.map
 
 /***/ },
-/* 35 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var QueueAction_1 = __webpack_require__(33);
-var QueueScheduler_1 = __webpack_require__(34);
+var QueueAction_1 = __webpack_require__(40);
+var QueueScheduler_1 = __webpack_require__(41);
 exports.queue = new QueueScheduler_1.QueueScheduler(QueueAction_1.QueueAction);
 //# sourceMappingURL=queue.js.map
 
 /***/ },
-/* 36 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var root_1 = __webpack_require__(1);
+var root_1 = __webpack_require__(2);
 function getSymbolObservable(context) {
     var $$observable;
     var Symbol = context.Symbol;
@@ -2048,7 +2164,7 @@ exports.$$observable = getSymbolObservable(root_1.root);
 //# sourceMappingURL=observable.js.map
 
 /***/ },
-/* 37 */
+/* 44 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -2079,7 +2195,7 @@ exports.UnsubscriptionError = UnsubscriptionError;
 //# sourceMappingURL=UnsubscriptionError.js.map
 
 /***/ },
-/* 38 */
+/* 45 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -2088,7 +2204,7 @@ exports.isArray = Array.isArray || (function (x) { return x && typeof x.length =
 //# sourceMappingURL=isArray.js.map
 
 /***/ },
-/* 39 */
+/* 46 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -2100,14 +2216,14 @@ exports.isObject = isObject;
 //# sourceMappingURL=isObject.js.map
 
 /***/ },
-/* 40 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var Subscriber_1 = __webpack_require__(3);
-var rxSubscriber_1 = __webpack_require__(4);
-var Observer_1 = __webpack_require__(11);
+var Subscriber_1 = __webpack_require__(5);
+var rxSubscriber_1 = __webpack_require__(6);
+var Observer_1 = __webpack_require__(12);
 function toSubscriber(nextOrObserver, error, complete) {
     if (nextOrObserver) {
         if (nextOrObserver instanceof Subscriber_1.Subscriber) {
@@ -2126,12 +2242,12 @@ exports.toSubscriber = toSubscriber;
 //# sourceMappingURL=toSubscriber.js.map
 
 /***/ },
-/* 41 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var errorObject_1 = __webpack_require__(14);
+var errorObject_1 = __webpack_require__(15);
 var tryCatchTarget;
 function tryCatcher() {
     try {
@@ -2151,7 +2267,108 @@ exports.tryCatch = tryCatch;
 //# sourceMappingURL=tryCatch.js.map
 
 /***/ },
-/* 42 */
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+__export(__webpack_require__(7));
+
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var core_1 = __webpack_require__(0);
+var services_1 = __webpack_require__(3);
+var DialogPlaceholderComponent = (function () {
+    function DialogPlaceholderComponent(injector, mDialog, viewRef) {
+        this.injector = injector;
+        this.mDialog = mDialog;
+        this.viewRef = viewRef;
+        this.mDialog.registerViewContainerRef(this.viewRef);
+        this.mDialog.registerInjector(this.injector);
+    }
+    Object.defineProperty(DialogPlaceholderComponent.prototype, "instanceCount", {
+        get: function () {
+            return this.mDialog.activeInstances;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return DialogPlaceholderComponent;
+}());
+__decorate([
+    core_1.ViewChild('container', { read: core_1.ViewContainerRef }),
+    __metadata("design:type", core_1.ViewContainerRef)
+], DialogPlaceholderComponent.prototype, "viewContainer", void 0);
+DialogPlaceholderComponent = __decorate([
+    core_1.Component({
+        selector: 'dialog-placeholder',
+        template: __webpack_require__(31),
+        styles: [__webpack_require__(27)],
+    }),
+    __metadata("design:paramtypes", [core_1.Injector,
+        services_1.MDialogService,
+        core_1.ViewContainerRef])
+], DialogPlaceholderComponent);
+exports.DialogPlaceholderComponent = DialogPlaceholderComponent;
+
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+var DialogResult = (function () {
+    function DialogResult() {
+    }
+    return DialogResult;
+}());
+exports.DialogResult = DialogResult;
+var DialogClosed = (function (_super) {
+    __extends(DialogClosed, _super);
+    function DialogClosed(data) {
+        var _this = _super.call(this) || this;
+        _this.data = data;
+        return _this;
+    }
+    return DialogClosed;
+}(DialogResult));
+exports.DialogClosed = DialogClosed;
+var DialogDismissed = (function (_super) {
+    __extends(DialogDismissed, _super);
+    function DialogDismissed() {
+        return _super.apply(this, arguments) || this;
+    }
+    return DialogDismissed;
+}(DialogResult));
+exports.DialogDismissed = DialogDismissed;
+
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var dialog_container_1 = __webpack_require__(20);
+function Modal() {
+    return function (target) {
+        Object.assign(target.prototype, dialog_container_1.ModalContainer.prototype);
+    };
+}
+exports.Modal = Modal;
+
+
+/***/ },
+/* 53 */
 /***/ function(module, exports) {
 
 var g;
@@ -2176,13 +2393,13 @@ module.exports = g;
 
 
 /***/ },
-/* 43 */
+/* 54 */
 /***/ function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_43__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_54__;
 
 /***/ },
-/* 44 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2190,9 +2407,10 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_43__;
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(__webpack_require__(16));
-__export(__webpack_require__(2));
-__export(__webpack_require__(6));
+__export(__webpack_require__(10));
+__export(__webpack_require__(3));
+__export(__webpack_require__(8));
+__export(__webpack_require__(9));
 
 
 /***/ }
