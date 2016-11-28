@@ -19,15 +19,11 @@ export class DialogPlaceholderComponent {
 		private mDialog: MDialogService,
 		private viewRef: ViewContainerRef,
 	) {
-		console.log(this.viewRef, this.viewContainer)
+		this.mDialog.registerViewContainerRef(this.viewRef)
 		this.mDialog.registerInjector(this.injector)
 	}
 
 	get instanceCount() {
 		return this.mDialog.activeInstances
-	}
-
-	ngAfterViewInit() {
-		this.mDialog.registerViewContainerRef(this.viewContainer)
 	}
 }

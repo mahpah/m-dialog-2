@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core'
 import { Modal } from '../../../src'
 
 @Component({
-	selector: 'my-custom-modal',
+	selector: 'custom-modal',
 	templateUrl: './custom-modal.component.jade',
 })
 @Modal()
