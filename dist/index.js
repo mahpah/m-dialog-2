@@ -533,7 +533,7 @@ if (typeof styles === 'string') {
 /* 18 */
 /***/ function(module, exports) {
 
-module.exports = "<dialog-container><div class=\"modal-dialog\"><div class=\"modal-content\"><div class=\"modal-header\"><button class=\"close\" type=\"button\" (click)=\"dismiss()\">&times;</button><h4 class=\"modal-title\">{{ title }}</h4></div><div class=\"modal-body\">{{ body }}</div><div class=\"modal-footer\"><button class=\"btn btn-success\" (click)=\"close(true)\">{{ btnOkLabel }}</button><button class=\"btn btn-default\" (click)=\"close()\">{{ btnCancelLabel }}</button></div></div></div></dialog-container>";
+module.exports = "<dialog-container><div class=\"modal-dialog\"><div class=\"modal-content\"><div class=\"modal-header\"><button class=\"close\" type=\"button\" (click)=\"dismiss()\">&times;</button><h4 class=\"modal-title\">{{ title }}</h4></div><div class=\"modal-body\">{{ body }}</div><div class=\"modal-footer\"><button class=\"btn btn-default\" (click)=\"close()\">{{ btnCancelLabel }}</button><button class=\"btn btn-success\" (click)=\"close(true)\">{{ btnOkLabel }}</button></div></div></div></dialog-container>";
 
 /***/ },
 /* 19 */
@@ -646,12 +646,12 @@ exports.DialogDismissed = DialogDismissed;
 "use strict";
 "use strict";
 var dialog_container_1 = __webpack_require__(10);
-function Modal() {
+function Dialog() {
     return function (target) {
         Object.assign(target.prototype, dialog_container_1.ModalContainer.prototype);
     };
 }
-exports.Modal = Modal;
+exports.Dialog = Dialog;
 
 
 /***/ },

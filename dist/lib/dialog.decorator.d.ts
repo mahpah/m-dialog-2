@@ -1,1 +1,1 @@
-export declare function Modal(): (target: any) => void;
+export declare function Dialog(): (target: any) => void;
