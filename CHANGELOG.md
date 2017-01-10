@@ -1,3 +1,12 @@
+<a name="0.0.3"></a>
+## 0.0.3 (2017-01-10)
+
+
+### Bug Fixes
+
+* cannot scroll on long dialog ([7fa9453](https://github.com/mahpah/m-dialog-2/commit/7fa9453))
+
+
 <a name="0.0.2"></a>
 ## 0.0.2 (2016-12-19)
 

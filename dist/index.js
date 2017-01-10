@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@angular/common"), require("@angular/core"), require("rxjs/ReplaySubject"));
+		module.exports = factory(require("@angular/common"), require("@angular/core"), require("@angular/platform-browser"), require("rxjs/ReplaySubject"));
 	else if(typeof define === 'function' && define.amd)
-		define(["@angular/common", "@angular/core", "rxjs/ReplaySubject"], factory);
+		define(["@angular/common", "@angular/core", "@angular/platform-browser", "rxjs/ReplaySubject"], factory);
 	else if(typeof exports === 'object')
-		exports["m-dialog-2"] = factory(require("@angular/common"), require("@angular/core"), require("rxjs/ReplaySubject"));
+		exports["m-dialog-2"] = factory(require("@angular/common"), require("@angular/core"), require("@angular/platform-browser"), require("rxjs/ReplaySubject"));
 	else
-		root["m-dialog-2"] = factory(root["@angular/common"], root["@angular/core"], root["rxjs/ReplaySubject"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_26__, __WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_27__) {
+		root["m-dialog-2"] = factory(root["@angular/common"], root["@angular/core"], root["@angular/platform-browser"], root["rxjs/ReplaySubject"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_26__, __WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_27__, __WEBPACK_EXTERNAL_MODULE_28__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -71,7 +71,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 28);
+/******/ 	return __webpack_require__(__webpack_require__.s = 29);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -362,14 +362,16 @@ exports.ModalContainer = ModalContainer;
 "use strict";
 "use strict";
 var core_1 = __webpack_require__(0);
-var ReplaySubject_1 = __webpack_require__(27);
+var ReplaySubject_1 = __webpack_require__(28);
 var lib_1 = __webpack_require__(5);
 var m_dialog_module_1 = __webpack_require__(6);
 var confirm_dialog_1 = __webpack_require__(22);
+var platform_browser_1 = __webpack_require__(27);
 var MDialogService = (function () {
-    function MDialogService(compiler) {
+    function MDialogService(compiler, document) {
         this.compiler = compiler;
-        this.activeInstances = 0;
+        this.document = document;
+        this._activeInstances = 0;
     }
     MDialogService.prototype.registerViewContainerRef = function (vcr) {
         this.viewContainerRef = vcr;
@@ -377,6 +379,22 @@ var MDialogService = (function () {
     MDialogService.prototype.registerInjector = function (injector) {
         this.injector = injector;
     };
+    Object.defineProperty(MDialogService.prototype, "activeInstances", {
+        get: function () {
+            return this._activeInstances;
+        },
+        set: function (value) {
+            this._activeInstances = value;
+            if (this._activeInstances > 0) {
+                this.setDocumentStyle('overflow', 'hidden');
+            }
+            else {
+                this.setDocumentStyle('overflow', '');
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     MDialogService.prototype.create = function (module, component, parameters) {
         var _this = this;
         var componentRef$ = new ReplaySubject_1.ReplaySubject();
@@ -427,11 +445,21 @@ var MDialogService = (function () {
         };
         return this.create(m_dialog_module_1.MDialogModule, confirm_dialog_1.ConfirmDialogComponent, context);
     };
+    MDialogService.prototype.setDocumentStyle = function (name, value) {
+        try {
+            this.document.body.style[name] = value;
+        }
+        catch (e) {
+            console.warn(e);
+        }
+    };
     return MDialogService;
 }());
 MDialogService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [core_1.Compiler])
+    __param(1, core_1.Inject(platform_browser_1.DOCUMENT)),
+    __metadata("design:paramtypes", [core_1.Compiler,
+        Document])
 ], MDialogService);
 exports.MDialogService = MDialogService;
 
@@ -445,7 +473,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, ":host {\n  display: block;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.5);\n}", ""]);
+exports.push([module.i, ":host {\n  display: block;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.5);\n  overflow-y: auto;\n}", ""]);
 
 // exports
 
@@ -668,6 +696,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_27__;
 
 /***/ },
 /* 28 */
+/***/ function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_28__;
+
+/***/ },
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
