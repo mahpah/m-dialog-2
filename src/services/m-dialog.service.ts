@@ -4,20 +4,23 @@ import {
 	ViewContainerRef,
 	Compiler,
 	ReflectiveInjector,
+	Inject,
 } from '@angular/core'
 import { ReplaySubject } from 'rxjs/ReplaySubject'
 import { DialogClosed, DialogDismissed, DialogResult } from '../lib'
 import { MDialogModule } from '../m-dialog.module'
 import { ConfirmDialogComponent } from '../components/confirm-dialog'
+import { DOCUMENT } from '@angular/platform-browser'
 
 @Injectable()
 export class MDialogService {
-	public activeInstances = 0
+	private _activeInstances = 0
 	private viewContainerRef: ViewContainerRef
 	private injector: Injector
 
 	constructor(
 		private compiler: Compiler,
+		@Inject(DOCUMENT) private document: Document,
 	) {}
 
 	registerViewContainerRef(vcr: ViewContainerRef) {
@@ -26,6 +29,19 @@ export class MDialogService {
 
 	registerInjector(injector: Injector) {
 		this.injector = injector
+	}
+
+	set activeInstances(value) {
+		this._activeInstances = value
+		if (this._activeInstances > 0) {
+			this.setDocumentStyle('overflow', 'hidden')
+		} else {
+			this.setDocumentStyle('overflow', '')
+		}
+	}
+
+	get activeInstances() {
+		return this._activeInstances
 	}
 
 	create(
@@ -99,5 +115,13 @@ export class MDialogService {
 			ConfirmDialogComponent,
 			context,
 		)
+	}
+
+	private setDocumentStyle(name, value) {
+		try {
+			this.document.body.style[name] = value
+		} catch (e) {
+			console.warn(e)
+		}
 	}
 }
